@@ -130,7 +130,13 @@ public class DrawGui extends JFrame implements ActionListener{
         getAlbumsBtn.setPreferredSize(btnSize);
         startBtn.setPreferredSize(btnSize);
         stopBtn.setPreferredSize(btnSize);
-        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        JPanel buttonPanel = new JPanel(new BorderLayout());
+        JPanel buttonPanel1 = new JPanel(new FlowLayout());
+            buttonPanel.setPreferredSize(new Dimension(820, 40));
+        JPanel buttonPanel2 = new JPanel(new FlowLayout());
+            buttonPanel2.setPreferredSize(new Dimension(300,40));
+        buttonPanel.add(buttonPanel1, BorderLayout.CENTER);
+        buttonPanel.add(buttonPanel2, BorderLayout.LINE_END);
         resultsPane = new JPanel(new FlowLayout());
         ballPane = new JPanel();
         resultsPane.setPreferredSize(new Dimension(820, 500));
@@ -154,9 +160,9 @@ public class DrawGui extends JFrame implements ActionListener{
         this.add(resultsPane, BorderLayout.CENTER);
         resultsPane.setLayout(new BorderLayout());
         this.add(ballPane, BorderLayout.LINE_END);
-        buttonPanel.add(getAlbumsBtn);
-        buttonPanel.add(startBtn);
-        buttonPanel.add(stopBtn);
+        buttonPanel1.add(getAlbumsBtn);
+        buttonPanel2.add(startBtn);
+        buttonPanel2.add(stopBtn);
     }
 
     //listener for button click
