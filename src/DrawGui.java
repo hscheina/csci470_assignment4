@@ -17,6 +17,8 @@ public class DrawGui extends JFrame implements ActionListener{
 
     //jframe content
     private JButton getAlbumsBtn;
+    private JButton startBtn;
+    private JButton stopBtn;
     private XMLDownloadTask XMLstuff;
     private JMenuBar menuBar;
     private JMenu typeMenu;
@@ -36,6 +38,7 @@ public class DrawGui extends JFrame implements ActionListener{
     private JCheckBoxMenuItem no_menuItem;
 
     private JPanel resultsPane;
+    private JPanel ballPane;
 
 
     public DrawGui(){
@@ -45,7 +48,7 @@ public class DrawGui extends JFrame implements ActionListener{
     public void createAndShowGUI(){
 
         setLayout(new BorderLayout());
-        setBounds(100, 100, 1020, 550);
+        setBounds(100, 100, 1120, 550);
         setResizable(false);
         createMenu();// create the menu bar, menus, and menu items, and adds listeners for the menu items
         addListeners();
@@ -120,10 +123,19 @@ public class DrawGui extends JFrame implements ActionListener{
 
 
         getAlbumsBtn = new JButton("Get Albums");
-        getAlbumsBtn.setPreferredSize(new Dimension(100,30));
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        startBtn = new JButton("Start");
+        stopBtn = new JButton("Stop");
+        Dimension btnSize = new Dimension(100, 30);
+        getAlbumsBtn.setPreferredSize(btnSize);
+        startBtn.setPreferredSize(btnSize);
+        stopBtn.setPreferredSize(btnSize);
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
         resultsPane = new JPanel(new FlowLayout());
-        resultsPane.setPreferredSize(new Dimension(1020, 500));
+        ballPane = new JPanel();
+        resultsPane.setPreferredSize(new Dimension(820, 500));
+        resultsPane.setBackground(Color.WHITE);
+        ballPane.setPreferredSize(new Dimension(300,500));
+        ballPane.setBackground(Color.WHITE);
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -139,7 +151,10 @@ public class DrawGui extends JFrame implements ActionListener{
         explicitMenu.add(no_menuItem);
         this.add(buttonPanel, BorderLayout.PAGE_START);
         this.add(resultsPane, BorderLayout.CENTER);
+        this.add(ballPane, BorderLayout.LINE_END);
         buttonPanel.add(getAlbumsBtn);
+        buttonPanel.add(startBtn);
+        buttonPanel.add(stopBtn);
     }
 
     //listener for button click
@@ -177,7 +192,6 @@ public class DrawGui extends JFrame implements ActionListener{
             } else {
                 typeSelection = "new-music";
             }
-            System.out.println(typeSelection);
 
 
             if (menuItem100.isSelected()) {
@@ -189,7 +203,6 @@ public class DrawGui extends JFrame implements ActionListener{
             } else {
                 itemsNum = "10";
             }
-            System.out.println(itemsNum);
 
 
             if (no_menuItem.isSelected()) {
@@ -197,10 +210,9 @@ public class DrawGui extends JFrame implements ActionListener{
             } else {
                 explicitYN = "explicit";
             }
-            System.out.println(explicitYN);
 
             XMLstuff.setURL("https://rss.itunes.apple.com/api/v1/us/itunes-music/" + typeSelection + "/all/" + itemsNum + "/" + explicitYN + ".atom");
-            System.out.println(this.XMLstuff.getUrl());
+            //System.out.println(this.XMLstuff.getUrl());
 
             this.XMLstuff.getAlbumList();
 
@@ -233,7 +245,7 @@ public class DrawGui extends JFrame implements ActionListener{
             table.getColumnModel().getColumn(3).setPreferredWidth(Math.round(tableSize.width*0.10f));
 
             JScrollPane resultsPaneScroll = new JScrollPane(table);
-            resultsPaneScroll.setPreferredSize(new Dimension(1020, 500));
+            resultsPaneScroll.setPreferredSize(new Dimension(820, 500));
             resultsPane.add(resultsPaneScroll);
 
             resultsPane.updateUI();
