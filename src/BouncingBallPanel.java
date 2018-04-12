@@ -7,11 +7,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class BouncingBallPanel {
+public class BouncingBallPanel extends AnimationPanel {
 
     JButton start;
     JButton stop;
-    JPanel BallAnimationPanel;
+    AnimationPanel BallAnimationPanel;
 
     public BouncingBallPanel() {
         BallAnimationPanel = new AnimationPanel();
@@ -30,10 +30,10 @@ public class BouncingBallPanel {
     }
 
     public void startAnimation() {
-
+        BallAnimationPanel.start();
     }
 
     public void stopAnimation() {
-
+        BallAnimationPanel.stop();
     }
 }

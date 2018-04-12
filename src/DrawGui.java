@@ -38,7 +38,7 @@ public class DrawGui extends JFrame implements ActionListener {
     private JCheckBoxMenuItem no_menuItem;
 
     private JPanel resultsPane;
-    private JPanel BouncingBallPanel;
+    private JPanel BallPanel;
 
 
     public DrawGui(){
@@ -137,11 +137,11 @@ public class DrawGui extends JFrame implements ActionListener {
         buttonPanel.add(buttonPanel1, BorderLayout.CENTER);
         buttonPanel.add(buttonPanel2, BorderLayout.LINE_END);
         resultsPane = new JPanel(new FlowLayout());
-        BouncingBallPanel = new JPanel();
+        BallPanel = new JPanel();
         resultsPane.setPreferredSize(new Dimension(820, 500));
         resultsPane.setBackground(Color.WHITE);
-        BouncingBallPanel.setPreferredSize(new Dimension(300,500));
-        BouncingBallPanel.setBackground(Color.WHITE);
+        BallPanel.setPreferredSize(new Dimension(300,500));
+        BallPanel.setBackground(Color.WHITE);
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -158,7 +158,7 @@ public class DrawGui extends JFrame implements ActionListener {
         this.add(buttonPanel, BorderLayout.PAGE_START);
         this.add(resultsPane, BorderLayout.CENTER);
         resultsPane.setLayout(new BorderLayout());
-        this.add(BouncingBallPanel, BorderLayout.LINE_END);
+        this.add(BallPanel, BorderLayout.LINE_END);
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(startBtn);
         buttonPanel2.add(stopBtn);
