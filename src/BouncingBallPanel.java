@@ -9,23 +9,24 @@ import java.awt.*;
 
 public class BouncingBallPanel extends AnimationPanel {
 
-    JButton start;
-    JButton stop;
+    Dimension btnSize = new Dimension(100, 30);
+    JButton startBtn = new JButton("Start");
+    JButton stopBtn = new JButton("Stop");
     AnimationPanel BallAnimationPanel;
 
     public BouncingBallPanel() {
         BallAnimationPanel = new AnimationPanel();
         BallAnimationPanel.setPreferredSize(new Dimension(300,500));
 
-        start.addActionListener(e -> {
+        startBtn.addActionListener(e -> {
             startAnimation(); //calls method to begin animation
-            start.setEnabled(false); //disables the start button
-            stop.setEnabled(true); //enables the stop button
+            startBtn.setEnabled(false); //disables the start button
+            stopBtn.setEnabled(true); //enables the stop button
         });
-        stop.addActionListener(e -> {
+        stopBtn.addActionListener(e -> {
             stopAnimation(); //calls method to stop animation
-            stop.setEnabled(false); //disables the stop button
-            start.setEnabled(true); //enables the start button
+            stopBtn.setEnabled(false); //disables the stop button
+            startBtn.setEnabled(true); //enables the start button
         });
     }
 
@@ -35,5 +36,15 @@ public class BouncingBallPanel extends AnimationPanel {
 
     public void stopAnimation() {
         BallAnimationPanel.stop();
+    }
+
+    public JButton getStartBtn() {
+        startBtn.setPreferredSize(btnSize);
+        return startBtn;
+    }
+
+    public JButton getStopBtn() {
+        stopBtn.setPreferredSize(btnSize);
+        return stopBtn;
     }
 }

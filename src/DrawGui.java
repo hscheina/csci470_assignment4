@@ -39,6 +39,7 @@ public class DrawGui extends JFrame implements ActionListener {
 
     private JPanel resultsPane;
     private JPanel BallPanel;
+    private BouncingBallPanel bounceBallPanel;
 
 
     public DrawGui(){
@@ -123,12 +124,8 @@ public class DrawGui extends JFrame implements ActionListener {
 
 
         getAlbumsBtn = new JButton("Get Albums");
-        startBtn = new JButton("Start");
-        stopBtn = new JButton("Stop");
         Dimension btnSize = new Dimension(100, 30);
         getAlbumsBtn.setPreferredSize(btnSize);
-        startBtn.setPreferredSize(btnSize);
-        stopBtn.setPreferredSize(btnSize);
         JPanel buttonPanel = new JPanel(new BorderLayout());
         JPanel buttonPanel1 = new JPanel(new FlowLayout());
             buttonPanel.setPreferredSize(new Dimension(820, 40));
@@ -138,10 +135,12 @@ public class DrawGui extends JFrame implements ActionListener {
         buttonPanel.add(buttonPanel2, BorderLayout.LINE_END);
         resultsPane = new JPanel(new FlowLayout());
         BallPanel = new JPanel();
+        bounceBallPanel = new BouncingBallPanel();
         resultsPane.setPreferredSize(new Dimension(820, 500));
         resultsPane.setBackground(Color.WHITE);
         BallPanel.setPreferredSize(new Dimension(300,500));
         BallPanel.setBackground(Color.WHITE);
+        BallPanel.add(bounceBallPanel);
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -160,8 +159,8 @@ public class DrawGui extends JFrame implements ActionListener {
         resultsPane.setLayout(new BorderLayout());
         this.add(BallPanel, BorderLayout.LINE_END);
         buttonPanel1.add(getAlbumsBtn);
-        buttonPanel2.add(startBtn);
-        buttonPanel2.add(stopBtn);
+        buttonPanel2.add(bounceBallPanel.getStartBtn());
+        buttonPanel2.add(bounceBallPanel.getStopBtn());
     }
 
     //listener for button click
