@@ -31,6 +31,8 @@ public class Ball {
         y += dy;
     }
 
-
-
+    public void draw(Graphics g){
+        g.setColor(color);
+        g.fillOval(x,y,radius * 2, radius * 2);
+    }
 }
