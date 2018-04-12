@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AnimationPanel extends JPanel {
     ArrayList<Ball> arrayListOfBallObjects;
     Dimension dimension;
-    Thread thread;
+    Thread animationThread;
 
     public void start() {
         /*
@@ -18,9 +18,9 @@ public class AnimationPanel extends JPanel {
         class and call the Thread’s start() method to make it runnable by the
         thread scheduler.
          */
-        if (thread == null) {
-            thread = new Thread();
-            thread.start();
+        if (animationThread == null) {
+            animationThread = new Thread();
+            animationThread.start();
         }
     }
 
@@ -30,8 +30,8 @@ public class AnimationPanel extends JPanel {
         This will cause the loop in the run() method to exit. Once the loop is
         finished, the method is finished as well, so the thread will terminate.
          */
-        thread.interrupt();
-        thread = null;
+        animationThread.interrupt();
+        animationThread = null;
     }
 
     @Override
@@ -56,8 +56,13 @@ public class AnimationPanel extends JPanel {
             Ball ball3 = new Ball();
                 arrayListOfBallObjects.add(ball3);
 
-            //TODO: access size of BouncingBallPanel and assign it to dimension
-            //dimension = BouncingBallPanel.getPreferredSize();
+            //TODO: access size of BouncingBallPanel and assign it to dimension, not sure if this method is correct
+            //dimension should be w:300 h:500
+            dimension = this.getSize();
+
+            //TODO: get the coordinates of the rectangle
+            //TODO: make the rectangle white
+            g.drawRect(x,y,300,500);
 
             for (Ball b : arrayListOfBallObjects) {
                 b.move(dimension);
@@ -79,7 +84,15 @@ public class AnimationPanel extends JPanel {
         (which will eventually result in paintComponent() being executed).
         If the thread is interrupted, just return from the method.
          */
+        while (Thread.currentThread() == animationThread) {
+            try {
+                animationThread.sleep(25);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
+            repaint();
+        }
     }
 
 }

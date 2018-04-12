@@ -17,8 +17,6 @@ public class DrawGui extends JFrame implements ActionListener {
 
     //jframe content
     private JButton getAlbumsBtn;
-    private JButton startBtn;
-    private JButton stopBtn;
     private XMLDownloadTask XMLstuff;
     private JMenuBar menuBar;
     private JMenu typeMenu;
