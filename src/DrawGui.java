@@ -1,5 +1,5 @@
 /***************************************************
- * Haley Scheina & Alonso Arteaga
+ * Alonso Arteaga & Haley Scheina
  * CSCI 470
  * Assignment 4
  **************************************************/
@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class DrawGui extends JFrame implements ActionListener{

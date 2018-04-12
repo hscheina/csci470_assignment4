@@ -1,3 +1,9 @@
+/***************************************************
+ * Alonso Arteaga & Haley Scheina
+ * CSCI 470
+ * Assignment 4
+ **************************************************/
+
 import java.awt.*;
 
 public class Ball {

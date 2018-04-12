@@ -1,5 +1,5 @@
 /***************************************************
- * Haley Scheina & Alonso Arteaga
+ * Alonso Arteaga & Haley Scheina
  * CSCI 470
  * Assignment 4
  **************************************************/
