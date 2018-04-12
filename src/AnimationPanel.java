@@ -62,7 +62,8 @@ public class AnimationPanel extends JPanel {
 
             //TODO: get the coordinates of the rectangle
             //TODO: make the rectangle white
-            g.drawRect(x,y,300,500);
+            g.drawRect(830,150,300,500);
+            g.setColor(Color.WHITE);
 
             for (Ball b : arrayListOfBallObjects) {
                 b.move(dimension);
@@ -89,6 +90,7 @@ public class AnimationPanel extends JPanel {
                 animationThread.sleep(25);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                return;
             }
 
             repaint();
