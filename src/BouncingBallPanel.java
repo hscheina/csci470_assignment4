@@ -7,7 +7,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class BouncingBallPanel implements AnimationPanel {
+public class BouncingBallPanel {
 
     JButton start;
     JButton stop;
