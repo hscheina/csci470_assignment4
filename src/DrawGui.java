@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class DrawGui extends JFrame implements ActionListener{
@@ -151,6 +152,7 @@ public class DrawGui extends JFrame implements ActionListener{
         explicitMenu.add(no_menuItem);
         this.add(buttonPanel, BorderLayout.PAGE_START);
         this.add(resultsPane, BorderLayout.CENTER);
+        resultsPane.setLayout(new BorderLayout());
         this.add(ballPane, BorderLayout.LINE_END);
         buttonPanel.add(getAlbumsBtn);
         buttonPanel.add(startBtn);
@@ -234,7 +236,7 @@ public class DrawGui extends JFrame implements ActionListener{
             };
             table.setRowHeight(50);
 
-            Dimension tableSize =  resultsPane.getPreferredSize();
+            Dimension tableSize =  new Dimension(820, 500);
             //name
             table.getColumnModel().getColumn(0).setPreferredWidth(Math.round(tableSize.width*0.50f));
             //artist
@@ -246,7 +248,7 @@ public class DrawGui extends JFrame implements ActionListener{
 
             JScrollPane resultsPaneScroll = new JScrollPane(table);
             resultsPaneScroll.setPreferredSize(new Dimension(820, 500));
-            resultsPane.add(resultsPaneScroll);
+            resultsPane.add(resultsPaneScroll, BorderLayout.CENTER);
 
             resultsPane.updateUI();
 
