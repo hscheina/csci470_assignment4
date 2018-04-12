@@ -1,5 +1,5 @@
 /***************************************************
- * Haley Scheina & Alonso Arteaga
+ * Alonso Arteaga & Haley Scheina
  * CSCI 470
  * Assignment 4
  **************************************************/
@@ -7,14 +7,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class BouncingBallPanel {
+public class BouncingBallPanel implements AnimationPanel {
 
     JButton start;
     JButton stop;
     JPanel BallAnimationPanel;
 
     public BouncingBallPanel() {
-        BallAnimationPanel = new JPanel();
+        BallAnimationPanel = new AnimationPanel();
         BallAnimationPanel.setPreferredSize(new Dimension(300,500));
 
         start.addActionListener(e -> {

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
-public class DrawGui extends JFrame implements ActionListener{
+public class DrawGui extends JFrame implements ActionListener {
     private String[] columnNames = {"Name", "Artist", "Genre", "Album Cover"};
     private JTable table;
 
