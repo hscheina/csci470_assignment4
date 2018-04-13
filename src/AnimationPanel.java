@@ -36,8 +36,10 @@ public class AnimationPanel extends JPanel implements Runnable {
 
     @Override
     protected void paintComponent(Graphics g) {
+        //Call the superclass version of the method.
+        super.paintComponent(g);
+
         /*
-        Call the superclass version of the method.
         • If the Dimension object reference is null, create a set of Ball objects
             and add them to the ArrayList, then get the dimensions of the panel by
             calling getSize().
@@ -47,7 +49,6 @@ public class AnimationPanel extends JPanel implements Runnable {
             The Dimension object needs to be passed to move(), while the Graphics
             object needs to be passed to draw().
          */
-        super.paintComponent(g);
         if (dimension == null) {
             Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball1);
@@ -90,7 +91,6 @@ public class AnimationPanel extends JPanel implements Runnable {
             try {
                 animationThread.sleep(25);
             } catch (InterruptedException e) {
-                e.printStackTrace();
                 return;
             }
             repaint();

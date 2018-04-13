@@ -37,7 +37,7 @@ public class DrawGui extends JFrame implements ActionListener {
 
     private JPanel resultsPane;
     private JPanel BallPanel;
-    private BouncingBallPanel bounceBallPanel;
+    private BouncingBallPanel bounceBallPanel = new BouncingBallPanel();
 
 
     public DrawGui(){
@@ -154,11 +154,10 @@ public class DrawGui extends JFrame implements ActionListener {
         this.add(resultsPane, BorderLayout.CENTER);
         resultsPane.setLayout(new BorderLayout());
         this.add(BallPanel, BorderLayout.LINE_END);
+        BallPanel.add(bounceBallPanel);
         buttonPanel1.add(getAlbumsBtn);
-        bounceBallPanel = new BouncingBallPanel();
         buttonPanel2.add(bounceBallPanel.getStartBtn());
         buttonPanel2.add(bounceBallPanel.getStopBtn());
-        BallPanel.add(bounceBallPanel);
     }
 
     //listener for button click
