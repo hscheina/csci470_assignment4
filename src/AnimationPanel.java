@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class AnimationPanel extends JPanel {
+public class AnimationPanel extends JPanel implements Runnable {
     ArrayList<Ball> arrayListOfBallObjects;
     Dimension dimension;
     Thread animationThread;
@@ -49,16 +49,17 @@ public class AnimationPanel extends JPanel {
          */
         super.paintComponent(g);
         if (dimension == null) {
-            Ball ball1 = new Ball();
+            Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball1);
-            Ball ball2 = new Ball();
+            Ball ball2 = new Ball(Color.RED, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball2);
-            Ball ball3 = new Ball();
+            Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball3);
 
             //TODO: access size of BouncingBallPanel and assign it to dimension, not sure if this method is correct
             //dimension should be w:300 h:500
-            dimension = this.getSize();
+            //dimension = this.getSize();
+            dimension = new Dimension(300,500);
 
             //TODO: get the coordinates of the rectangle
             //TODO: make the rectangle white
@@ -92,7 +93,6 @@ public class AnimationPanel extends JPanel {
                 e.printStackTrace();
                 return;
             }
-
             repaint();
         }
     }

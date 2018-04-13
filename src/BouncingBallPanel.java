@@ -7,16 +7,21 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class BouncingBallPanel extends AnimationPanel {
+public class BouncingBallPanel extends JPanel {
 
     Dimension btnSize = new Dimension(100, 30);
-    JButton startBtn = new JButton("Start");
-    JButton stopBtn = new JButton("Stop");
+    JButton startBtn;
+    JButton stopBtn;
     AnimationPanel BallAnimationPanel;
 
     public BouncingBallPanel() {
         BallAnimationPanel = new AnimationPanel();
         BallAnimationPanel.setPreferredSize(new Dimension(300,500));
+
+        startBtn = new JButton("Start");
+        startBtn.setPreferredSize(btnSize);
+        stopBtn = new JButton("Stop");
+        stopBtn.setPreferredSize(btnSize);
 
         startBtn.addActionListener(e -> {
             startAnimation(); //calls method to begin animation
@@ -39,12 +44,10 @@ public class BouncingBallPanel extends AnimationPanel {
     }
 
     public JButton getStartBtn() {
-        startBtn.setPreferredSize(btnSize);
         return startBtn;
     }
 
     public JButton getStopBtn() {
-        stopBtn.setPreferredSize(btnSize);
         return stopBtn;
     }
 }

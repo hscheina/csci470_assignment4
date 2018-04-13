@@ -133,12 +133,10 @@ public class DrawGui extends JFrame implements ActionListener {
         buttonPanel.add(buttonPanel2, BorderLayout.LINE_END);
         resultsPane = new JPanel(new FlowLayout());
         BallPanel = new JPanel();
-        bounceBallPanel = new BouncingBallPanel();
         resultsPane.setPreferredSize(new Dimension(820, 500));
         resultsPane.setBackground(Color.WHITE);
         BallPanel.setPreferredSize(new Dimension(300,500));
         BallPanel.setBackground(Color.WHITE);
-        BallPanel.add(bounceBallPanel);
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -157,8 +155,10 @@ public class DrawGui extends JFrame implements ActionListener {
         resultsPane.setLayout(new BorderLayout());
         this.add(BallPanel, BorderLayout.LINE_END);
         buttonPanel1.add(getAlbumsBtn);
+        bounceBallPanel = new BouncingBallPanel();
         buttonPanel2.add(bounceBallPanel.getStartBtn());
         buttonPanel2.add(bounceBallPanel.getStopBtn());
+        BallPanel.add(bounceBallPanel);
     }
 
     //listener for button click
