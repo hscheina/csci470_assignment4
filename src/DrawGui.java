@@ -153,16 +153,21 @@ public class DrawGui extends JFrame implements ActionListener {
         this.add(buttonPanel, BorderLayout.PAGE_START);
         this.add(resultsPane, BorderLayout.CENTER);
         resultsPane.setLayout(new BorderLayout());
+
+        //bounce ball components
         this.add(BallPanel, BorderLayout.LINE_END);
         BallPanel.add(bounceBallPanel);
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(bounceBallPanel.getStartBtn());
         buttonPanel2.add(bounceBallPanel.getStopBtn());
+        bounceBallPanel.setVisible(true);
     }
 
     //listener for button click
     private void addListeners(){
         getAlbumsBtn.addActionListener(this);
+        bounceBallPanel.getStartBtn().addActionListener(this);
+        bounceBallPanel.getStopBtn().addActionListener(this);
 
     }
 
@@ -253,6 +258,10 @@ public class DrawGui extends JFrame implements ActionListener {
 
             resultsPane.updateUI();
 
+        } else if ( cmd.equals("Start")){
+            System.out.println("start");
+        } else if ( cmd.equals("Stop")){
+            System.out.println("stop");
         }
     }
 

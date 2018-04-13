@@ -12,6 +12,12 @@ public class AnimationPanel extends JPanel implements Runnable {
     Dimension dimension;
     Thread animationThread;
 
+    public AnimationPanel(){
+        arrayListOfBallObjects = null;
+        dimension = null;
+        animationThread = null;
+    }
+
     public void start() {
         /*
         – If the Thread reference is null, create a new Thread object from this
@@ -50,7 +56,8 @@ public class AnimationPanel extends JPanel implements Runnable {
             object needs to be passed to draw().
          */
         if (dimension == null) {
-            Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
+            //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
+           Ball ball1 = new Ball(Color.GREEN, 25,0,0,0,0);
                 arrayListOfBallObjects.add(ball1);
             Ball ball2 = new Ball(Color.RED, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball2);
@@ -59,16 +66,16 @@ public class AnimationPanel extends JPanel implements Runnable {
 
             //TODO: access size of BouncingBallPanel and assign it to dimension, not sure if this method is correct
             //dimension should be w:300 h:500
-            //dimension = this.getSize();
-            dimension = new Dimension(300,500);
+            Dimension d = getSize();
+//            dimension = new Dimension(300,500);
 
             //TODO: get the coordinates of the rectangle
             //TODO: make the rectangle white
-            g.drawRect(830,150,300,500);
+            g.drawRect(0,0,300,500);
             g.setColor(Color.WHITE);
 
             for (Ball b : arrayListOfBallObjects) {
-                b.move(dimension);
+                b.move(d);
                 b.draw(g);
             }
         }
