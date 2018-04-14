@@ -36,7 +36,7 @@ public class DrawGui extends JFrame implements ActionListener {
     private JCheckBoxMenuItem no_menuItem;
 
     private JPanel resultsPane;
-    private JPanel BallPanel;
+    private JPanel SidePanel;
     private BouncingBallPanel bounceBallPanel = new BouncingBallPanel();
 
 
@@ -132,11 +132,11 @@ public class DrawGui extends JFrame implements ActionListener {
         buttonPanel.add(buttonPanel1, BorderLayout.CENTER);
         buttonPanel.add(buttonPanel2, BorderLayout.LINE_END);
         resultsPane = new JPanel(new FlowLayout());
-        BallPanel = new JPanel();
+        SidePanel = new JPanel();
         resultsPane.setPreferredSize(new Dimension(820, 500));
         resultsPane.setBackground(Color.WHITE);
-        BallPanel.setPreferredSize(new Dimension(300,500));
-        BallPanel.setBackground(Color.WHITE);
+        SidePanel.setPreferredSize(new Dimension(300,500));
+        SidePanel.setBackground(Color.WHITE);
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -155,8 +155,8 @@ public class DrawGui extends JFrame implements ActionListener {
         resultsPane.setLayout(new BorderLayout());
 
         //bounce ball components
-        this.add(BallPanel, BorderLayout.LINE_END);
-        BallPanel.add(bounceBallPanel);
+        this.add(SidePanel, BorderLayout.LINE_END);
+        SidePanel.add(bounceBallPanel);
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(bounceBallPanel.getStartBtn());
         buttonPanel2.add(bounceBallPanel.getStopBtn());

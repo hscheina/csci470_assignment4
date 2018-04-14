@@ -33,30 +33,37 @@ public class BouncingBallPanel extends JPanel {
 
         //setVisible(true);
         startBtn.addActionListener(e -> {
-//            startAnimation(); //calls method to begin animation
-//            startBtn.setEnabled(false); //disables the start button
-//            stopBtn.setEnabled(true); //enables the stop button
-            actionPerformed(e);});
+            startAnimation(); //calls method to begin animation
+            startBtn.setEnabled(false); //disables the start button
+            stopBtn.setEnabled(true); //enables the stop button
+            });
 
-        startBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startAnimation();
-                BallAnimationPanel.start();
-                startBtn.setEnabled(false);
-                stopBtn.setEnabled(true);
-            }
-        });
+        stopBtn.addActionListener(e -> {
+            stopAnimation(); //calls method to begin animation
+            startBtn.setEnabled(true); //disables the start button
+            stopBtn.setEnabled(false); //enables the stop button
+            });
+ //           actionPerformed(e);});
+
+//        startBtn.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                startAnimation();
+//                BallAnimationPanel.start();
+//                startBtn.setEnabled(false);
+//                stopBtn.setEnabled(true);
+//            }
+//        });
 
         // TODO: 4/13/18 clicking stop button at start of program, throws a null pointer exception. make it unclickable
-        stopBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                stopAnimation(); //calls method to stop animation
-                stopBtn.setEnabled(false); //disables the stop button
-                startBtn.setEnabled(true); //enables the start button
-            }
-        });
+//        stopBtn.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                stopAnimation(); //calls method to stop animation
+//                stopBtn.setEnabled(false); //disables the stop button
+//                startBtn.setEnabled(true); //enables the start button
+//            }
+//        });
 
     }
 
@@ -64,19 +71,19 @@ public class BouncingBallPanel extends JPanel {
         BallAnimationPanel.start();
     }
 
-    public void actionPerformed(ActionEvent cmd){
-        if(cmd.equals("Start")){
-            startAnimation();
-            BallAnimationPanel.start();
-            startBtn.setEnabled(false);
-            stopBtn.setEnabled(true);
-        } else if (cmd.equals("Stop")){
-            stopAnimation();
-            BallAnimationPanel.stop();
-            startBtn.setEnabled(true);
-            stopBtn.setEnabled(false);
-        }
-    }
+//    public void actionPerformed(ActionEvent cmd){
+//        if(cmd.equals("Start")){
+//            startAnimation();
+//            BallAnimationPanel.start();
+//            startBtn.setEnabled(false);
+//            stopBtn.setEnabled(true);
+//        } else if (cmd.equals("Stop")){
+//            stopAnimation();
+//            BallAnimationPanel.stop();
+//            startBtn.setEnabled(true);
+//            stopBtn.setEnabled(false);
+//        }
+//    }
 
     public void stopAnimation() {
         BallAnimationPanel.stop();

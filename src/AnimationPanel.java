@@ -59,6 +59,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             object needs to be passed to draw().
          */
         if (dimension == null) {
+            Dimension d = getSize();
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
            Ball ball1 = new Ball(Color.GREEN, 25,0,0,0,0);
                 arrayListOfBallObjects.add(ball1);
@@ -69,7 +70,7 @@ public class AnimationPanel extends JPanel implements Runnable {
 
             //TODO: access size of BouncingBallPanel and assign it to dimension, not sure if this method is correct
             //dimension should be w:300 h:500
-            Dimension d = getSize();
+           // Dimension d = getSize();
 //            dimension = new Dimension(300,500);
 
             //TODO: get the coordinates of the rectangle

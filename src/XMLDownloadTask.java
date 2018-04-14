@@ -6,6 +6,8 @@
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -15,7 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class XMLDownloadTask{
+public class XMLDownloadTask {
     /*
         XMLDownloadtask is a subclass of Swingworker.
         used to download xml data in the background thread.
