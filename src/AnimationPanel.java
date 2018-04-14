@@ -14,6 +14,7 @@ public class AnimationPanel extends JPanel implements Runnable {
     Thread animationThread;
 
     public AnimationPanel(){
+        super();
         setLayout(new GridLayout());
         setPreferredSize(new Dimension(300,500));
         arrayListOfBallObjects = null;
@@ -85,6 +86,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             }
         }
     }
+
 
     public void run() {
         /*

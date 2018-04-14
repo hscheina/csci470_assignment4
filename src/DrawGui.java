@@ -36,7 +36,7 @@ public class DrawGui extends JFrame implements ActionListener {
     private JCheckBoxMenuItem no_menuItem;
 
     private JPanel resultsPane;
-    private JPanel SidePanel;
+    private JPanel SidePanel = new BouncingBallPanel();
     private BouncingBallPanel bounceBallPanel = new BouncingBallPanel();
 
 
@@ -50,7 +50,7 @@ public class DrawGui extends JFrame implements ActionListener {
         setBounds(100, 100, 1120, 550);
         setResizable(false);
         createMenu();// create the menu bar, menus, and menu items, and adds listeners for the menu items
-        addListeners();
+        //addListeners();
 
         XMLstuff = new XMLDownloadTask();
 
@@ -155,6 +155,8 @@ public class DrawGui extends JFrame implements ActionListener {
         resultsPane.setLayout(new BorderLayout());
 
         //bounce ball components
+        SidePanel.setPreferredSize(new Dimension(300,500));
+        bounceBallPanel.setPreferredSize(new Dimension(200,400));
         this.add(SidePanel, BorderLayout.LINE_END);
         bounceBallPanel.setPreferredSize(new Dimension(300, 500));
         bounceBallPanel.setBackground(Color.PINK);
@@ -162,16 +164,17 @@ public class DrawGui extends JFrame implements ActionListener {
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(bounceBallPanel.getStartBtn());
         buttonPanel2.add(bounceBallPanel.getStopBtn());
-        bounceBallPanel.setVisible(true);
-    }
-
-    //listener for button click
-    private void addListeners(){
-        getAlbumsBtn.addActionListener(this);
-        bounceBallPanel.getStartBtn().addActionListener(this);
-        bounceBallPanel.getStopBtn().addActionListener(this);
+        this.SidePanel.setVisible(true);
 
     }
+//
+//    //listener for button click
+//    private void addListeners(){
+//        getAlbumsBtn.addActionListener(this);
+//        bounceBallPanel.getStartBtn().addActionListener(this);
+//        bounceBallPanel.getStopBtn().addActionListener(this);
+//
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -268,10 +271,18 @@ public class DrawGui extends JFrame implements ActionListener {
     }
 
 
-    private static void main(String[] args){
+    public static void main(String[] args){
         EventQueue.invokeLater(() -> {
-            DrawGui frame = new DrawGui();
-            frame.createAndShowGUI();
+            try {
+                JPanel panel = new JPanel(new BorderLayout());
+                // panel.setLayout(new BorderLayout());
+                panel.setPreferredSize(new Dimension(500, 500));
+                AnimationPanel animation = new AnimationPanel();
+                panel.add(animation, BorderLayout.CENTER);
+                panel.setVisible(true);
+            } catch (Exception e ){
+                System.out.println(e);
+            }
         });
     }
 }
