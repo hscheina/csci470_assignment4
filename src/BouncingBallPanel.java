@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BouncingBallPanel extends JPanel {
 
@@ -24,26 +25,39 @@ public class BouncingBallPanel extends JPanel {
         //BallAnimationPanel.setPreferredSize(new Dimension(300,500));
         setPreferredSize(new Dimension(300,500));
 //        setBackground(java.awt.Color.BLUE);
-
+        setBounds(new Rectangle(100,100));
         startBtn = new JButton("Start");
         startBtn.setPreferredSize(btnSize);
         stopBtn = new JButton("Stop");
         stopBtn.setPreferredSize(btnSize);
 
-        setVisible(true);
+        //setVisible(true);
         startBtn.addActionListener(e -> {
 //            startAnimation(); //calls method to begin animation
 //            startBtn.setEnabled(false); //disables the start button
 //            stopBtn.setEnabled(true); //enables the stop button
             actionPerformed(e);});
 
-        // TODO: 4/13/18 clicking stop button at start of program, throws a null pointer exception. make it unclickable
-        stopBtn.addActionListener(e -> {
-//            stopAnimation(); //calls method to stop animation
-//            stopBtn.setEnabled(false); //disables the stop button
-//            startBtn.setEnabled(true); //enables the start button
-            actionPerformed(e);
+        startBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startAnimation();
+                BallAnimationPanel.start();
+                startBtn.setEnabled(false);
+                stopBtn.setEnabled(true);
+            }
         });
+
+        // TODO: 4/13/18 clicking stop button at start of program, throws a null pointer exception. make it unclickable
+        stopBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stopAnimation(); //calls method to stop animation
+                stopBtn.setEnabled(false); //disables the stop button
+                startBtn.setEnabled(true); //enables the start button
+            }
+        });
+
     }
 
     public void startAnimation() {
@@ -53,10 +67,12 @@ public class BouncingBallPanel extends JPanel {
     public void actionPerformed(ActionEvent cmd){
         if(cmd.equals("Start")){
             startAnimation();
+            BallAnimationPanel.start();
             startBtn.setEnabled(false);
             stopBtn.setEnabled(true);
         } else if (cmd.equals("Stop")){
             stopAnimation();
+            BallAnimationPanel.stop();
             startBtn.setEnabled(true);
             stopBtn.setEnabled(false);
         }

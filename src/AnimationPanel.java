@@ -25,9 +25,11 @@ public class AnimationPanel extends JPanel implements Runnable {
         thread scheduler.
          */
         if (animationThread == null) {
-            animationThread = new Thread();
+            animationThread = new Thread(this);
             animationThread.start();
+
         }
+
     }
 
     public void stop() {
@@ -43,6 +45,7 @@ public class AnimationPanel extends JPanel implements Runnable {
     @Override
     protected void paintComponent(Graphics g) {
         //Call the superclass version of the method.
+        System.out.println("paint component running");
         super.paintComponent(g);
 
         /*
@@ -59,7 +62,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
            Ball ball1 = new Ball(Color.GREEN, 25,0,0,0,0);
                 arrayListOfBallObjects.add(ball1);
-            Ball ball2 = new Ball(Color.RED, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
+            Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball2);
             Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball3);
@@ -94,12 +97,14 @@ public class AnimationPanel extends JPanel implements Runnable {
         (which will eventually result in paintComponent() being executed).
         If the thread is interrupted, just return from the method.
          */
+        System.out.println("run running");
         while (Thread.currentThread() == animationThread) {
             try {
                 animationThread.sleep(25);
             } catch (InterruptedException e) {
                 return;
             }
+//            revalidate();
             repaint();
         }
     }
