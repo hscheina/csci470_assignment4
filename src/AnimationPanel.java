@@ -6,6 +6,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.awt.Graphics;
 
 public class AnimationPanel extends JPanel implements Runnable {
     ArrayList<Ball> arrayListOfBallObjects;
@@ -13,6 +14,7 @@ public class AnimationPanel extends JPanel implements Runnable {
     Thread animationThread;
 
     public AnimationPanel(){
+        setLayout(new GridLayout());
         arrayListOfBallObjects = null;
         dimension = null;
         animationThread = null;
@@ -59,7 +61,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             object needs to be passed to draw().
          */
         if (dimension == null) {
-            Dimension d = getSize();
+            dimension = getSize();
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
            Ball ball1 = new Ball(Color.GREEN, 25,0,0,0,0);
                 arrayListOfBallObjects.add(ball1);
@@ -79,7 +81,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             g.setColor(Color.WHITE);
 
             for (Ball b : arrayListOfBallObjects) {
-                b.move(d);
+                b.move(dimension);
                 b.draw(g);
             }
         }
