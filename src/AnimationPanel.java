@@ -15,6 +15,7 @@ public class AnimationPanel extends JPanel implements Runnable {
 
     public AnimationPanel(){
         setLayout(new GridLayout());
+        setPreferredSize(new Dimension(300,500));
         arrayListOfBallObjects = null;
         dimension = null;
         animationThread = null;
@@ -70,14 +71,12 @@ public class AnimationPanel extends JPanel implements Runnable {
             Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
                 arrayListOfBallObjects.add(ball3);
 
-            //TODO: access size of BouncingBallPanel and assign it to dimension, not sure if this method is correct
             //dimension should be w:300 h:500
            // Dimension d = getSize();
 //            dimension = new Dimension(300,500);
 
             //TODO: get the coordinates of the rectangle
-            //TODO: make the rectangle white
-            g.drawRect(0,0,300,500);
+            g.drawRect(920,189,300,500);
             g.setColor(Color.WHITE);
 
             for (Ball b : arrayListOfBallObjects) {

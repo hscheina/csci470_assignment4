@@ -136,7 +136,7 @@ public class DrawGui extends JFrame implements ActionListener {
         resultsPane.setPreferredSize(new Dimension(820, 500));
         resultsPane.setBackground(Color.WHITE);
         SidePanel.setPreferredSize(new Dimension(300,500));
-        SidePanel.setBackground(Color.WHITE);
+        SidePanel.setLayout(new GridLayout());
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -156,6 +156,8 @@ public class DrawGui extends JFrame implements ActionListener {
 
         //bounce ball components
         this.add(SidePanel, BorderLayout.LINE_END);
+        bounceBallPanel.setPreferredSize(new Dimension(300, 500));
+        bounceBallPanel.setBackground(Color.PINK);
         SidePanel.add(bounceBallPanel);
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(bounceBallPanel.getStartBtn());
