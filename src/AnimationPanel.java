@@ -63,7 +63,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             object needs to be passed to draw().
          */
         if (dimension == null) {
-            dimension = getSize();
+            dimension = getPreferredSize();
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
            Ball ball1 = new Ball(Color.GREEN, 25,0,0,0,0);
                 arrayListOfBallObjects.add(ball1);

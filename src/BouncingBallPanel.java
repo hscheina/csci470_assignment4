@@ -16,20 +16,21 @@ public class BouncingBallPanel extends JPanel {
     Dimension btnSize = new Dimension(100, 30);
     JButton startBtn;
     JButton stopBtn;
+
     AnimationPanel BallAnimationPanel;
 
 
 
     public BouncingBallPanel() {
         BallAnimationPanel = new AnimationPanel();
-        //BallAnimationPanel.setPreferredSize(new Dimension(300,500));
         setPreferredSize(new Dimension(300,500));
-//        setBackground(java.awt.Color.BLUE);
-        setBounds(new Rectangle(100,100));
+        setLayout(new GridLayout());
+//        setBounds(new Rectangle(100,100));
         startBtn = new JButton("Start");
         startBtn.setPreferredSize(btnSize);
         stopBtn = new JButton("Stop");
         stopBtn.setPreferredSize(btnSize);
+        stopBtn.setEnabled(false);
 
         //setVisible(true);
 //        startBtn.addActionListener(e -> {
@@ -60,7 +61,6 @@ public class BouncingBallPanel extends JPanel {
 //            }
 //        });
 
-        // TODO: 4/13/18 clicking stop button at start of program, throws a null pointer exception. make it unclickable
 //        stopBtn.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
