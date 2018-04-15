@@ -29,9 +29,8 @@ public class AnimationPanel extends JPanel implements Runnable {
         thread scheduler.
          */
         if (animationThread == null) {
-            animationThread = new Thread(this);
+            animationThread = new Thread(this::run);
             animationThread.start();
-
         }
 
     }
@@ -50,6 +49,10 @@ public class AnimationPanel extends JPanel implements Runnable {
     protected void paintComponent(Graphics g) {
         //Call the superclass version of the method.
         System.out.println("paint component running");
+        Dimension size = getSize();
+        if (size==null) {
+            setSize(new Dimension(300,500));
+        }
         super.paintComponent(g);
 
         /*
@@ -87,7 +90,7 @@ public class AnimationPanel extends JPanel implements Runnable {
         }
     }
 
-
+@Override
     public void run() {
         /*
         This is effectively the “main” method that will run in the separate
@@ -101,6 +104,24 @@ public class AnimationPanel extends JPanel implements Runnable {
         (which will eventually result in paintComponent() being executed).
         If the thread is interrupted, just return from the method.
          */
+
+
+        /*
+public static void main(String args[]) throws InterruptedException {
+    SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+            JFrame frame = new JFrame("Empty JFrame");
+            frame.setSize(new Dimension(1000, 500));
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            PaintComponentTest ilt = new PaintComponentTest();
+            frame.add(ilt);
+            frame.setVisible(true);
+            ilt.setBackground(Color.BLACK);
+        }
+    });
+}
+ */
+
         System.out.println("run running");
         while (Thread.currentThread() == animationThread) {
             try {
