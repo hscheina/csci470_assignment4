@@ -50,7 +50,7 @@ public class DrawGui extends JFrame implements ActionListener {
         setBounds(100, 100, 1120, 550);
         setResizable(false);
         createMenu();// create the menu bar, menus, and menu items, and adds listeners for the menu items
-        //addListeners();
+        addListeners();
 
         XMLstuff = new XMLDownloadTask();
 
@@ -169,12 +169,11 @@ public class DrawGui extends JFrame implements ActionListener {
     }
 //
 //    //listener for button click
-//    private void addListeners(){
-//        getAlbumsBtn.addActionListener(this);
-//        bounceBallPanel.getStartBtn().addActionListener(this);
-//        bounceBallPanel.getStopBtn().addActionListener(this);
-//
-//    }
+    private void addListeners(){
+        getAlbumsBtn.addActionListener(this);
+        bounceBallPanel.getStartBtn().addActionListener(this);
+        bounceBallPanel.getStopBtn().addActionListener(this);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

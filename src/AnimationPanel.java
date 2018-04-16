@@ -94,7 +94,7 @@ public class AnimationPanel extends JPanel implements Runnable {
         }
     }
 
-    @Override
+ //   @Override
     public void run() {
         /*
         This is effectively the “main” method that will run in the separate
