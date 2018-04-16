@@ -156,10 +156,10 @@ public class DrawGui extends JFrame implements ActionListener {
 
         //bounce ball components
         SidePanel.setPreferredSize(new Dimension(300,500));
-        bounceBallPanel.setPreferredSize(new Dimension(200,400));
         add(SidePanel, BorderLayout.LINE_END);
         bounceBallPanel.setPreferredSize(new Dimension(300, 500));
-        //bounceBallPanel.setBackground(Color.PINK);
+        AnimationPanel anime = new AnimationPanel();
+        bounceBallPanel.add(anime);
         SidePanel.add(bounceBallPanel);
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(bounceBallPanel.getStartBtn());

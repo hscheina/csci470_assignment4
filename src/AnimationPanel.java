@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 
 public class AnimationPanel extends JPanel implements Runnable {
-    ArrayList<Ball> arrayListOfBallObjects;
+    private ArrayList<Ball> arrayListOfBallObjects;
     Dimension dimension;
     Thread animationThread;
 
@@ -18,7 +18,8 @@ public class AnimationPanel extends JPanel implements Runnable {
         super();
         setLayout(new GridLayout());
         setPreferredSize(new Dimension(300, 500));
-        arrayListOfBallObjects = null;
+        arrayListOfBallObjects = new ArrayList<>();
+        //arrayListOfBallObjects = null;
         dimension = null;
         animationThread = null;
     }
@@ -30,7 +31,8 @@ public class AnimationPanel extends JPanel implements Runnable {
         thread scheduler.
          */
         if (animationThread == null) {
-            animationThread = new Thread(this::run);
+            animationThread = new Thread(this);
+           // animationThread = new Thread(this::run);
             animationThread.start();
         }
 
@@ -49,10 +51,10 @@ public class AnimationPanel extends JPanel implements Runnable {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+      //  super.paintComponent(g);
         //Call the superclass version of the method.
         System.out.println("paint component running");
-        Dimension size = getSize();
+   //     Dimension size = getSize();
         //if (size==null) {
         //    setSize(new Dimension(300,500));
         //}
@@ -70,11 +72,11 @@ public class AnimationPanel extends JPanel implements Runnable {
         if (dimension == null) {
             dimension = getSize();
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
-            Ball ball1 = new Ball(Color.GREEN, 25, 0, 0, 0, 0);
-            arrayListOfBallObjects.add(ball1);
+            Ball ball1 = new Ball(Color.GREEN, 20, 0, 0, 0, 0);
             Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 28), -2, -4);
-            arrayListOfBallObjects.add(ball2);
             Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
+            arrayListOfBallObjects.add(ball1);
+            arrayListOfBallObjects.add(ball2);
             arrayListOfBallObjects.add(ball3);
         }
         //dimension should be w:300 h:500
@@ -132,7 +134,7 @@ public static void main(String args[]) throws InterruptedException {
             } catch (InterruptedException e) {
                 return;
             }
-            revalidate();
+            //revalidate();
             repaint();
         }
     }
