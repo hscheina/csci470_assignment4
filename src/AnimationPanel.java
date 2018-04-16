@@ -73,8 +73,8 @@ public class AnimationPanel extends JPanel implements Runnable {
             dimension = getSize();
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
             Ball ball1 = new Ball(Color.GREEN, 20, 0, 0, 0, 0);
-            Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 28), -2, -4);
-            Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
+            Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 45), -2, -4);
+            Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 45), -2, -4);
             arrayListOfBallObjects.add(ball1);
             arrayListOfBallObjects.add(ball2);
             arrayListOfBallObjects.add(ball3);
