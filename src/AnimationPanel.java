@@ -3,6 +3,7 @@
  * CSCI 470
  * Assignment 4
  **************************************************/
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,10 +14,10 @@ public class AnimationPanel extends JPanel implements Runnable {
     Dimension dimension;
     Thread animationThread;
 
-    public AnimationPanel(){
+    public AnimationPanel() {
         super();
         setLayout(new GridLayout());
-        setPreferredSize(new Dimension(300,500));
+        setPreferredSize(new Dimension(300, 500));
         arrayListOfBallObjects = null;
         dimension = null;
         animationThread = null;
@@ -33,6 +34,7 @@ public class AnimationPanel extends JPanel implements Runnable {
             animationThread.start();
         }
 
+
     }
 
     public void stop() {
@@ -47,13 +49,13 @@ public class AnimationPanel extends JPanel implements Runnable {
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         //Call the superclass version of the method.
         System.out.println("paint component running");
         Dimension size = getSize();
-        if (size==null) {
-            setSize(new Dimension(300,500));
-        }
-        super.paintComponent(g);
+        //if (size==null) {
+        //    setSize(new Dimension(300,500));
+        //}
 
         /*
         • If the Dimension object reference is null, create a set of Ball objects
@@ -66,31 +68,31 @@ public class AnimationPanel extends JPanel implements Runnable {
             object needs to be passed to draw().
          */
         if (dimension == null) {
-            dimension = getPreferredSize();
+            dimension = getSize();
             //Ball ball1 = new Ball(Color.GREEN, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
-           Ball ball1 = new Ball(Color.GREEN, 25,0,0,0,0);
-                arrayListOfBallObjects.add(ball1);
+            Ball ball1 = new Ball(Color.GREEN, 25, 0, 0, 0, 0);
+            arrayListOfBallObjects.add(ball1);
             Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 28), -2, -4);
-                arrayListOfBallObjects.add(ball2);
+            arrayListOfBallObjects.add(ball2);
             Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 28), -2, -4);
-                arrayListOfBallObjects.add(ball3);
-
-            //dimension should be w:300 h:500
-           // Dimension d = getSize();
+            arrayListOfBallObjects.add(ball3);
+        }
+        //dimension should be w:300 h:500
+        // Dimension d = getSize();
 //            dimension = new Dimension(300,500);
 
-            //TODO: get the coordinates of the rectangle
-            g.drawRect(920,189,300,500);
-            g.setColor(Color.WHITE);
+        //TODO: get the coordinates of the rectangle
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, dimension.width, dimension.height);
 
-            for (Ball b : arrayListOfBallObjects) {
-                b.move(dimension);
-                b.draw(g);
-            }
+        for (Ball b : arrayListOfBallObjects) {
+            b.move(dimension);
+            b.draw(g);
+
         }
     }
 
-@Override
+    @Override
     public void run() {
         /*
         This is effectively the “main” method that will run in the separate
@@ -123,13 +125,14 @@ public static void main(String args[]) throws InterruptedException {
  */
 
         System.out.println("run running");
+
         while (Thread.currentThread() == animationThread) {
             try {
                 animationThread.sleep(25);
             } catch (InterruptedException e) {
                 return;
             }
-//            revalidate();
+            revalidate();
             repaint();
         }
     }

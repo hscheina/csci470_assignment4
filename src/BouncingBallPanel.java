@@ -23,6 +23,7 @@ public class BouncingBallPanel extends JPanel {
 
     public BouncingBallPanel() {
         BallAnimationPanel = new AnimationPanel();
+        BallAnimationPanel.setBackground(java.awt.Color.BLUE);
         setPreferredSize(new Dimension(300,500));
         setLayout(new GridLayout());
 //        setBounds(new Rectangle(100,100));
@@ -61,6 +62,7 @@ public class BouncingBallPanel extends JPanel {
 //            }
 //        });
 
+        // TODO: 4/13/18 clicking stop button at start of program, throws a null pointer exception. make it unclickable
 //        stopBtn.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
@@ -101,4 +103,6 @@ public class BouncingBallPanel extends JPanel {
     public JButton getStopBtn() {
         return stopBtn;
     }
+
+    public AnimationPanel getAnimationPanel() { return BallAnimationPanel; }
 }

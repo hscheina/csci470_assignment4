@@ -24,8 +24,7 @@ public static void main(String args[]) throws InterruptedException {
 
 public abstract class Main {
 
-    public static void main(String[] args) throws InterruptedException {
-
+    public static void main(String[] args){
             EventQueue.invokeLater(() -> {
                 DrawGui frame = new DrawGui();
                 frame.createAndShowGUI();
