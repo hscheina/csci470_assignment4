@@ -13,10 +13,6 @@ public class Ball {
     private int dx, dy; //amount of change in the ball's x/y coordinate each time a ball moves
                         // negative val means ball is moving left/up.
                         // positive val means ball is moving right/down
-    //default constructor
-    public Ball(){
-
-    }
 
     public Ball(Color c, int r, int x, int y, int dx, int dy){
         color = c;

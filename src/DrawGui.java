@@ -4,7 +4,6 @@
  * Assignment 4
  **************************************************/
 
-import javafx.geometry.Side;
 
 import javax.swing.*;
 import java.awt.*;
@@ -160,7 +159,6 @@ public class DrawGui extends JFrame implements ActionListener {
         buttonPanel1.add(getAlbumsBtn);
 
 
-
         // assignment four buttons (start and stop animation)
         startBtn = new JButton("Start");
         stopBtn = new JButton("Stop");
@@ -172,7 +170,7 @@ public class DrawGui extends JFrame implements ActionListener {
         SidePanel.setSize(new Dimension(300, 500));
         SidePanel.add(bounceBallPanel, BorderLayout.CENTER);
 
-        add(SidePanel,BorderLayout.EAST);
+        add(SidePanel, BorderLayout.EAST);
         SidePanel.setVisible(true);
 
     }
@@ -233,7 +231,6 @@ public class DrawGui extends JFrame implements ActionListener {
             }
 
             XMLstuff.setURL("https://rss.itunes.apple.com/api/v1/us/itunes-music/" + typeSelection + "/all/" + itemsNum + "/" + explicitYN + ".atom");
-            //System.out.println(this.XMLstuff.getUrl());
 
             this.XMLstuff.getAlbumList();
 
@@ -272,7 +269,6 @@ public class DrawGui extends JFrame implements ActionListener {
             resultsPane.updateUI();
 
         } else if (cmd.equals("Start")) {
-            System.out.println("start");
             bounceBallPanel.startAnimation();
             stopBtn.setEnabled(true);
             startBtn.setEnabled(false);//calls method to begin animation
@@ -280,30 +276,10 @@ public class DrawGui extends JFrame implements ActionListener {
             bounceBallPanel.setVisible(true);
 
         } else if (cmd.equals("Stop")) {
-            System.out.println("stop");
             bounceBallPanel.stopAnimation(); //calls method to begin animation
             startBtn.setEnabled(true); //disables the start button
             stopBtn.setEnabled(false); //enables the stop button
 //            bounceBallPanel.setVisible(false);
         }
     }
-
-/* main method used for debugging. ignore
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new JFrame();
-                AnimationPanel animationPanel = new AnimationPanel();
-                animationPanel.setLayout(new BorderLayout());
-
-                frame.add(animationPanel);
-                frame.validate();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
-    }*/
 }

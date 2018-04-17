@@ -4,12 +4,7 @@
  * Assignment 4
  **************************************************/
 
-import javafx.scene.paint.Color;
-
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class BouncingBallPanel extends AnimationPanel {
 
