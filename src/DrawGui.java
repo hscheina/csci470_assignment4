@@ -4,6 +4,8 @@
  * Assignment 4
  **************************************************/
 
+import javafx.geometry.Side;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -161,6 +163,7 @@ public class DrawGui extends JFrame implements ActionListener {
         bounceBallPanel.setLayout(new GridLayout());
         AnimationPanel anime = new AnimationPanel();
         bounceBallPanel.add(anime);
+        SidePanel.setOpaque(false);
         SidePanel.add(bounceBallPanel);
         buttonPanel1.add(getAlbumsBtn);
         buttonPanel2.add(bounceBallPanel.getStartBtn());

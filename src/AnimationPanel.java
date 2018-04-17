@@ -51,10 +51,11 @@ public class AnimationPanel extends JPanel implements Runnable {
     protected void paintComponent(Graphics g) {
         System.out.println("paint component running");
         if (dimension == null) {
-            dimension = getSize();
-            Ball ball1 = new Ball(Color.GREEN, 20, 0, 0, 0, 0);
-            Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 45), -2, -4);
-            Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 45), -2, -4);
+            dimension = new Dimension(300,500);
+            //dimension = getSize();
+            Ball ball1 = new Ball(Color.GREEN, 20, 0, 0, 1, 10);
+            Ball ball2 = new Ball(Color.RED, 20, 10, (dimension.height - 45), 2, 9);
+            Ball ball3 = new Ball(Color.BLUE, 20, (dimension.width * 2 / 3), (dimension.height - 45), 2, 4);
             arrayListOfBallObjects.add(ball1);
             arrayListOfBallObjects.add(ball2);
             arrayListOfBallObjects.add(ball3);
@@ -69,6 +70,7 @@ public class AnimationPanel extends JPanel implements Runnable {
 
         }
     }
+
 
     public void run() {
         System.out.println("run running");
