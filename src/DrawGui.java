@@ -162,7 +162,9 @@ public class DrawGui extends JFrame implements ActionListener {
 //        bounceBallPanel = new BouncingBallPanel();
         startBtn = new JButton("Start");
         startBtn.addActionListener(e -> {
-            bounceBallPanel.startAnimation(); //calls method to begin animation
+            bounceBallPanel.startAnimation();
+            stopBtn.setEnabled(true);
+            startBtn.setEnabled(false);//calls method to begin animation
             //stopBtn.setEnabled(true); //enables the stop button
             //bounce ball components
 //        SidePanel.setSize(new Dimension(300,500));
