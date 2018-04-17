@@ -60,12 +60,11 @@ public class AnimationPanel extends JPanel implements Runnable {
             arrayListOfBallObjects.add(ball1);
             arrayListOfBallObjects.add(ball2);
             arrayListOfBallObjects.add(ball3);
-            g.setColor(Color.WHITE);
-            g.fillRect(0, 0, dimension.width, dimension.height);
+
         }
 
-//        g.setColor(Color.WHITE);
-//        g.fillRect(0, 0, dimension.width, dimension.height);
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, dimension.width, dimension.height);
 
         for (Ball b : arrayListOfBallObjects) {
             b.move(dimension);
