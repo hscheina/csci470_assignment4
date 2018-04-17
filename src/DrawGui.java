@@ -38,15 +38,17 @@ public class DrawGui extends JFrame implements ActionListener {
     private JCheckBoxMenuItem no_menuItem;
 
     private JPanel resultsPane;
-    private JPanel SidePanel = new BouncingBallPanel();
+    private JPanel SidePanel = new JPanel();
     private BouncingBallPanel bounceBallPanel = new BouncingBallPanel();
+    private JButton startBtn;
+    private JButton stopBtn;
 
 
-    public DrawGui(){
+    public DrawGui() {
         super("iTunes Store Album");
     }
 
-    public void createAndShowGUI(){
+    public void createAndShowGUI() {
 
         setLayout(new BorderLayout());
         setBounds(100, 100, 1120, 550);
@@ -58,11 +60,11 @@ public class DrawGui extends JFrame implements ActionListener {
 
         setJMenuBar(menuBar);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        pack();
-        setVisible(true);
+//        pack();
+//        setVisible(true);
     }
 
-    private void createMenu(){
+    private void createMenu() {
         menuBar = new JMenuBar();
         typeMenu = new JMenu("Type");
         typeMenu.setToolTipText("choose between New Music, Recent Releases, or Top Albums");
@@ -128,16 +130,16 @@ public class DrawGui extends JFrame implements ActionListener {
         getAlbumsBtn.setPreferredSize(btnSize);
         JPanel buttonPanel = new JPanel(new BorderLayout());
         JPanel buttonPanel1 = new JPanel(new FlowLayout());
-            buttonPanel.setPreferredSize(new Dimension(820, 40));
+        buttonPanel.setPreferredSize(new Dimension(820, 40));
         JPanel buttonPanel2 = new JPanel(new FlowLayout());
-            buttonPanel2.setPreferredSize(new Dimension(300,40));
+        buttonPanel2.setPreferredSize(new Dimension(300, 40));
         buttonPanel.add(buttonPanel1, BorderLayout.CENTER);
         buttonPanel.add(buttonPanel2, BorderLayout.LINE_END);
         resultsPane = new JPanel(new FlowLayout());
         SidePanel = new JPanel();
         resultsPane.setPreferredSize(new Dimension(820, 500));
         resultsPane.setBackground(Color.WHITE);
-        SidePanel.setPreferredSize(new Dimension(300,500));
+        SidePanel.setPreferredSize(new Dimension(300, 500));
         SidePanel.setLayout(new GridLayout());
 
         menuBar.add(typeMenu);
@@ -152,31 +154,61 @@ public class DrawGui extends JFrame implements ActionListener {
         menuBar.add(explicitMenu);
         explicitMenu.add(yes_menuItem);
         explicitMenu.add(no_menuItem);
-        this.add(buttonPanel, BorderLayout.PAGE_START);
+        this.add(buttonPanel, BorderLayout.NORTH);
         this.add(resultsPane, BorderLayout.CENTER);
         resultsPane.setLayout(new BorderLayout());
 
-        //bounce ball components
-        SidePanel.setPreferredSize(new Dimension(300,500));
-        add(SidePanel, BorderLayout.LINE_END);
-        bounceBallPanel.setPreferredSize(new Dimension(300, 500));
-        bounceBallPanel.setLayout(new GridLayout());
-        AnimationPanel anime = new AnimationPanel();
-        bounceBallPanel.add(anime);
-        SidePanel.setOpaque(false);
-        SidePanel.add(bounceBallPanel);
+
+//        bounceBallPanel = new BouncingBallPanel();
+        startBtn = new JButton("Start");
+        startBtn.addActionListener(e -> {
+            bounceBallPanel.startAnimation(); //calls method to begin animation
+            //stopBtn.setEnabled(true); //enables the stop button
+            //bounce ball components
+//        SidePanel.setSize(new Dimension(300,500));
+            //bounceBallPanel.setSize(new Dimension(300, 500));
+            //  bounceBallPanel.setLayout(new GridLayout());
+            //AnimationPanel anime = new AnimationPanel();
+//        anime.setLayout(new GridLayout());
+            //bounceBallPanel.add(anime);
+            startBtn.setEnabled(false); //disables the start button
+        });
+
+        this.add(SidePanel,BorderLayout.EAST);
+        SidePanel.setSize(new Dimension(300, 500));
+        SidePanel.add(bounceBallPanel, BorderLayout.CENTER);
+        add(SidePanel, BorderLayout.EAST);
+
+
         buttonPanel1.add(getAlbumsBtn);
-        buttonPanel2.add(bounceBallPanel.getStartBtn());
-        buttonPanel2.add(bounceBallPanel.getStopBtn());
+        buttonPanel2.add(startBtn);
+
+        setResizable(true);
         SidePanel.setVisible(true);
 
+
+
+
+        stopBtn = new JButton("Stop");
+        buttonPanel2.add(stopBtn);
+        stopBtn.addActionListener(e -> {
+            bounceBallPanel.stopAnimation(); //calls method to begin animation
+            startBtn.setEnabled(true); //disables the start button
+            stopBtn.setEnabled(false); //enables the stop button
+        });
+
+
+
+
+
     }
-//
+
+    //
 //    //listener for button click
-    private void addListeners(){
+    private void addListeners() {
         getAlbumsBtn.addActionListener(this);
-        bounceBallPanel.getStartBtn().addActionListener(this);
-        bounceBallPanel.getStopBtn().addActionListener(this);
+//        bounceBallPanel.getStartBtn().addActionListener(this);
+//        bounceBallPanel.getStopBtn().addActionListener(this);
     }
 
     @Override
@@ -187,10 +219,9 @@ public class DrawGui extends JFrame implements ActionListener {
             resultsPane.removeAll();
 
             XMLstuff.clearAlbumList();
-            DefaultTableModel tableModel = new DefaultTableModel(columnNames,0) {
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
                 @Override
-                public Class getColumnClass(int column)
-                {
+                public Class getColumnClass(int column) {
                     if (column == 3) return ImageIcon.class;
                     return Object.class;
                 }
@@ -233,7 +264,7 @@ public class DrawGui extends JFrame implements ActionListener {
             this.XMLstuff.getAlbumList();
 
             //create custom row and add it to tablemodel
-            for (Album a: this.XMLstuff.getAlbumList()) {
+            for (Album a : this.XMLstuff.getAlbumList()) {
                 tableModel.addRow(new Object[]{
                         a.getName(),
                         a.getArtistName(),
@@ -250,15 +281,15 @@ public class DrawGui extends JFrame implements ActionListener {
             };
             table.setRowHeight(50);
 
-            Dimension tableSize =  new Dimension(820, 500);
+            Dimension tableSize = new Dimension(820, 500);
             //name
-            table.getColumnModel().getColumn(0).setPreferredWidth(Math.round(tableSize.width*0.50f));
+            table.getColumnModel().getColumn(0).setPreferredWidth(Math.round(tableSize.width * 0.50f));
             //artist
-            table.getColumnModel().getColumn(1).setPreferredWidth(Math.round(tableSize.width*0.20f));
+            table.getColumnModel().getColumn(1).setPreferredWidth(Math.round(tableSize.width * 0.20f));
             //genre
-            table.getColumnModel().getColumn(2).setPreferredWidth(Math.round(tableSize.width*0.20f));
+            table.getColumnModel().getColumn(2).setPreferredWidth(Math.round(tableSize.width * 0.20f));
             //album cover
-            table.getColumnModel().getColumn(3).setPreferredWidth(Math.round(tableSize.width*0.10f));
+            table.getColumnModel().getColumn(3).setPreferredWidth(Math.round(tableSize.width * 0.10f));
 
             JScrollPane resultsPaneScroll = new JScrollPane(table);
             resultsPaneScroll.setPreferredSize(new Dimension(820, 500));
@@ -266,25 +297,34 @@ public class DrawGui extends JFrame implements ActionListener {
 
             resultsPane.updateUI();
 
-        } else if ( cmd.equals("Start")){
+        } else if (cmd.equals("Start")) {
             System.out.println("start");
-        } else if ( cmd.equals("Stop")){
+        } else if (cmd.equals("Stop")) {
             System.out.println("stop");
         }
     }
 
 
-    public static void main(String[] args){
-        EventQueue.invokeLater(() -> {
-            try {
-                JPanel panel = new JPanel(new BorderLayout());
-                // panel.setLayout(new BorderLayout());
-                panel.setPreferredSize(new Dimension(500, 500));
-                AnimationPanel animation = new AnimationPanel();
-                panel.add(animation, BorderLayout.CENTER);
-                panel.setVisible(true);
-            } catch (Exception e ){
-                System.out.println(e);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JFrame frame = new JFrame();
+                AnimationPanel animationPanel = new AnimationPanel();
+                animationPanel.setLayout(new BorderLayout());
+//                animationPanel.setPreferredSize(new Dimension(300,500));
+//                animationPanel.setSize(new Dimension(300,500));
+
+                frame.add(animationPanel);
+                frame.validate();
+//                animationPanel.invalidate();
+//                animationPanel.run();
+//                animationPanel.revalidate();
+//                animationPanel.repaint();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                frame.pack();
+                frame.setVisible(true);
             }
         });
     }

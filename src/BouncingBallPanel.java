@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BouncingBallPanel extends JPanel {
+public class BouncingBallPanel extends AnimationPanel {
 
     Dimension btnSize = new Dimension(100, 30);
     JButton startBtn;
@@ -24,15 +24,17 @@ public class BouncingBallPanel extends JPanel {
 
     public BouncingBallPanel() {
         BallAnimationPanel = new AnimationPanel();
-        BallAnimationPanel.setBackground(java.awt.Color.BLUE);
+    //    BallAnimationPanel.setBackground(java.awt.Color.BLUE);
         BallAnimationPanel.setPreferredSize(new Dimension(300,500));
-        BallAnimationPanel.setLayout(new GridLayout());
+        setSize(new Dimension(300,500));
+        BallAnimationPanel.setLayout(new BorderLayout());
+        this.add(BallAnimationPanel, BorderLayout.EAST);
 //        setBounds(new Rectangle(100,100));
-        startBtn = new JButton("Start");
-        startBtn.setPreferredSize(btnSize);
-        stopBtn = new JButton("Stop");
-        stopBtn.setPreferredSize(btnSize);
-        stopBtn.setEnabled(false);
+  //      startBtn = new JButton("Start");
+       // startBtn.setPreferredSize(btnSize);
+    //    stopBtn = new JButton("Stop");
+    //    stopBtn.setPreferredSize(btnSize);
+       // stopBtn.setEnabled(false);
 
         //setVisible(true);
 //        startBtn.addActionListener(e -> {
@@ -40,17 +42,17 @@ public class BouncingBallPanel extends JPanel {
 ////            startBtn.setEnabled(false); //disables the start button
 ////            stopBtn.setEnabled(true); //enables the stop button
 //            actionPerformed(e);});
-        startBtn.addActionListener(e -> {
-                startAnimation(); //calls method to begin animation
-            startBtn.setEnabled(false); //disables the start button
-            stopBtn.setEnabled(true); //enables the stop button
-            });
+//        startBtn.addActionListener(e -> {
+//                startAnimation(); //calls method to begin animation
+//            startBtn.setEnabled(false); //disables the start button
+//            stopBtn.setEnabled(true); //enables the stop button
+//            });
 
-        stopBtn.addActionListener(e -> {
-            stopAnimation(); //calls method to begin animation
-            startBtn.setEnabled(true); //disables the start button
-            stopBtn.setEnabled(false); //enables the stop button
-            });
+//        stopBtn.addActionListener(e -> {
+//            stopAnimation(); //calls method to begin animation
+//            startBtn.setEnabled(true); //disables the start button
+//            stopBtn.setEnabled(false); //enables the stop button
+//            });
  //           actionPerformed(e);});
 
 //        startBtn.addActionListener(new ActionListener() {

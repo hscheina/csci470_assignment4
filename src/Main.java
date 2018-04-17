@@ -25,11 +25,15 @@ public static void main(String args[]) throws InterruptedException {
 public abstract class Main {
 
     public static void main(String[] args){
-            EventQueue.invokeLater(new Runnable() {
+
+        SwingUtilities.invokeLater(new Runnable() {
+//        EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     DrawGui frame = new DrawGui();
                     frame.createAndShowGUI();
+                    frame.pack();
+                    frame.setVisible(true);
                 }
             });
         }
