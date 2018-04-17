@@ -29,6 +29,7 @@ public class BouncingBallPanel extends AnimationPanel {
         setSize(new Dimension(300,500));
         BallAnimationPanel.setLayout(new BorderLayout());
         this.add(BallAnimationPanel, BorderLayout.EAST);
+        setVisible(false);
 //        setBounds(new Rectangle(100,100));
   //      startBtn = new JButton("Start");
        // startBtn.setPreferredSize(btnSize);

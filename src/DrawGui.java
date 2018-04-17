@@ -141,6 +141,7 @@ public class DrawGui extends JFrame implements ActionListener {
         resultsPane.setBackground(Color.WHITE);
         SidePanel.setPreferredSize(new Dimension(300, 500));
         SidePanel.setLayout(new GridLayout());
+        SidePanel.setBackground(Color.white);
 
         menuBar.add(typeMenu);
         typeMenu.add(new_music_MenuItem);
@@ -161,20 +162,13 @@ public class DrawGui extends JFrame implements ActionListener {
 
 //        bounceBallPanel = new BouncingBallPanel();
         startBtn = new JButton("Start");
-        startBtn.addActionListener(e -> {
-            bounceBallPanel.startAnimation();
-            stopBtn.setEnabled(true);
-            startBtn.setEnabled(false);//calls method to begin animation
-            //stopBtn.setEnabled(true); //enables the stop button
-            //bounce ball components
-//        SidePanel.setSize(new Dimension(300,500));
-            //bounceBallPanel.setSize(new Dimension(300, 500));
-            //  bounceBallPanel.setLayout(new GridLayout());
-            //AnimationPanel anime = new AnimationPanel();
-//        anime.setLayout(new GridLayout());
-            //bounceBallPanel.add(anime);
-            startBtn.setEnabled(false); //disables the start button
-        });
+//        startBtn.addActionListener(e -> {
+//            bounceBallPanel.startAnimation();
+//            stopBtn.setEnabled(true);
+//            startBtn.setEnabled(false);//calls method to begin animation
+//            startBtn.setEnabled(false); //disables the start button
+//            bounceBallPanel.setVisible(true);
+//        });
 
         this.add(SidePanel,BorderLayout.EAST);
         SidePanel.setSize(new Dimension(300, 500));
@@ -193,24 +187,14 @@ public class DrawGui extends JFrame implements ActionListener {
 
         stopBtn = new JButton("Stop");
         buttonPanel2.add(stopBtn);
-        stopBtn.addActionListener(e -> {
-            bounceBallPanel.stopAnimation(); //calls method to begin animation
-            startBtn.setEnabled(true); //disables the start button
-            stopBtn.setEnabled(false); //enables the stop button
-        });
-
-
-
-
-
     }
 
     //
 //    //listener for button click
     private void addListeners() {
         getAlbumsBtn.addActionListener(this);
-//        bounceBallPanel.getStartBtn().addActionListener(this);
-//        bounceBallPanel.getStopBtn().addActionListener(this);
+        startBtn.addActionListener(this);
+        stopBtn.addActionListener(this);
     }
 
     @Override
@@ -301,8 +285,18 @@ public class DrawGui extends JFrame implements ActionListener {
 
         } else if (cmd.equals("Start")) {
             System.out.println("start");
+            bounceBallPanel.startAnimation();
+            stopBtn.setEnabled(true);
+            startBtn.setEnabled(false);//calls method to begin animation
+            startBtn.setEnabled(false); //disables the start button
+            bounceBallPanel.setVisible(true);
+
         } else if (cmd.equals("Stop")) {
             System.out.println("stop");
+            bounceBallPanel.stopAnimation(); //calls method to begin animation
+            startBtn.setEnabled(true); //disables the start button
+            stopBtn.setEnabled(false); //enables the stop button
+            bounceBallPanel.setVisible(false);
         }
     }
 
