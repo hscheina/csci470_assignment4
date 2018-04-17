@@ -164,6 +164,7 @@ public class DrawGui extends JFrame implements ActionListener {
         // assignment four buttons (start and stop animation)
         startBtn = new JButton("Start");
         stopBtn = new JButton("Stop");
+        stopBtn.setEnabled(false);
 
         buttonPanel2.add(startBtn);
         buttonPanel2.add(stopBtn);
@@ -283,7 +284,7 @@ public class DrawGui extends JFrame implements ActionListener {
             bounceBallPanel.stopAnimation(); //calls method to begin animation
             startBtn.setEnabled(true); //disables the start button
             stopBtn.setEnabled(false); //enables the stop button
-            bounceBallPanel.setVisible(false);
+//            bounceBallPanel.setVisible(false);
         }
     }
 
