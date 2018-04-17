@@ -41,13 +41,13 @@ public class BouncingBallPanel extends JPanel {
 ////            stopBtn.setEnabled(true); //enables the stop button
 //            actionPerformed(e);});
         startBtn.addActionListener(e -> {
-                startAnimation(); //calls method to begin animation
+                BallAnimationPanel.start(); //calls method to begin animation
             startBtn.setEnabled(false); //disables the start button
             stopBtn.setEnabled(true); //enables the stop button
             });
 
         stopBtn.addActionListener(e -> {
-            stopAnimation(); //calls method to begin animation
+            BallAnimationPanel.stop(); //calls method to stop animation
             startBtn.setEnabled(true); //disables the start button
             stopBtn.setEnabled(false); //enables the stop button
             });
