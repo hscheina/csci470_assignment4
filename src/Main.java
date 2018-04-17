@@ -27,7 +27,6 @@ public abstract class Main {
     public static void main(String[] args){
 
         SwingUtilities.invokeLater(new Runnable() {
-//        EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     DrawGui frame = new DrawGui();

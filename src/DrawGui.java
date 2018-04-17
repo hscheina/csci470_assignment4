@@ -60,8 +60,7 @@ public class DrawGui extends JFrame implements ActionListener {
 
         setJMenuBar(menuBar);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        pack();
-//        setVisible(true);
+
     }
 
     private void createMenu() {
@@ -158,35 +157,23 @@ public class DrawGui extends JFrame implements ActionListener {
         this.add(buttonPanel, BorderLayout.NORTH);
         this.add(resultsPane, BorderLayout.CENTER);
         resultsPane.setLayout(new BorderLayout());
+        buttonPanel1.add(getAlbumsBtn);
 
 
-//        bounceBallPanel = new BouncingBallPanel();
+
+        // assignment four buttons (start and stop animation)
         startBtn = new JButton("Start");
-//        startBtn.addActionListener(e -> {
-//            bounceBallPanel.startAnimation();
-//            stopBtn.setEnabled(true);
-//            startBtn.setEnabled(false);//calls method to begin animation
-//            startBtn.setEnabled(false); //disables the start button
-//            bounceBallPanel.setVisible(true);
-//        });
+        stopBtn = new JButton("Stop");
 
-        this.add(SidePanel,BorderLayout.EAST);
+        buttonPanel2.add(startBtn);
+        buttonPanel2.add(stopBtn);
+
         SidePanel.setSize(new Dimension(300, 500));
         SidePanel.add(bounceBallPanel, BorderLayout.CENTER);
-        add(SidePanel, BorderLayout.EAST);
 
-
-        buttonPanel1.add(getAlbumsBtn);
-        buttonPanel2.add(startBtn);
-
-        setResizable(true);
+        add(SidePanel,BorderLayout.EAST);
         SidePanel.setVisible(true);
 
-
-
-
-        stopBtn = new JButton("Stop");
-        buttonPanel2.add(stopBtn);
     }
 
     //
@@ -300,7 +287,7 @@ public class DrawGui extends JFrame implements ActionListener {
         }
     }
 
-
+/* main method used for debugging. ignore
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -308,20 +295,14 @@ public class DrawGui extends JFrame implements ActionListener {
                 JFrame frame = new JFrame();
                 AnimationPanel animationPanel = new AnimationPanel();
                 animationPanel.setLayout(new BorderLayout());
-//                animationPanel.setPreferredSize(new Dimension(300,500));
-//                animationPanel.setSize(new Dimension(300,500));
 
                 frame.add(animationPanel);
                 frame.validate();
-//                animationPanel.invalidate();
-//                animationPanel.run();
-//                animationPanel.revalidate();
-//                animationPanel.repaint();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 frame.pack();
                 frame.setVisible(true);
             }
         });
-    }
+    }*/
 }
